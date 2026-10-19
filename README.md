@@ -5,6 +5,10 @@
 > **分析对象**：Fork 的 `main` 分支，2026-10-09 所见代码  
 > **文档性质**：基于实际源代码与部分 CSV 的静态核查；**尚未执行训练或运行预训练权重**。文中的「预期」不代表已复现的结果。
 
+> **当前复现入口（2026-10-14）**：[Mac → Linux 复现计划](docs/experiments/01_mac_to_linux_reproduction_plan.md)。先做 Mac CPU 冒烟测试，再做 Linux CUDA 验证与正式实验；本轮仅修复文档公式并制定计划，没有修改训练算法。
+
+> **可配置训练入口（2026-10-14）**：新增 [train.py](train.py)；参数、Mac/Linux 测试及完整训练命令见 [可配置训练说明](docs/experiments/02_configurable_training.md)。新入口的 Mac CPU 20 步训练与保存恢复已通过，Linux/长训练未验证；作者原文件及预训练权重保持不变。
+
 ## 1. 一句话理解项目
 
 这是一个**基于 PyTorch 的三维、稳态、不可压缩流场重建 PINN**。使用少量带速度标注的空间点和更多物理配点，让全连接网络学习连续映射：
@@ -148,19 +152,19 @@ layers = [3, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 4]
 
 不可压缩连续方程：
 
-``math
+$$
 f_c = u_x + v_y + w_z
-``math
+$$
 
 x 方向动量残差可等价写成：
 
-``math
+$$
 f_u = u u_x + v u_y + w u_z
       + \lambda_{1x} p_x
       - \lambda_{2x} \left[\nabla^2 u + \partial_x(u_x+v_y+w_z)\right].
-``math
+$$
 
-y、z 方向使用相同形式，分别对应 `\lambda_{1y/z}` 和 `\lambda_{2y/z}`；这与代码中的黏性二阶导数组合对应。这里**没有** `u_t/v_t/w_t`，因此是稳态方程实现。
+y、z 方向使用相同形式，分别对应 $\lambda_{1y},\lambda_{1z}$ 和 $\lambda_{2y},\lambda_{2z}$；这与代码中的黏性二阶导数组合对应。这里**没有** $u_t,v_t,w_t$，因此是稳态方程实现。
 
 额外可训练参数：`lambda_1x/y/z`（压力梯度系数）与 `lambda_2x/y/z`（黏性项系数）共 6 个。`alpha` 也被创建和注册为可训练参数，但**没有参与 `loss_func()` 计算**，因而没有实际损失梯度贡献。
 
@@ -168,24 +172,24 @@ y、z 方向使用相同形式，分别对应 `\lambda_{1y/z}` 和 `\lambda_{2y/
 
 源码 `mse_data` 注释为「MRE」，真实形式是**未取平均的逐点绝对相对误差求和**，分别对三种速度分量求和：
 
-``math
+$$
 L_{\mathrm{data}} =
 \sum_i \left|\frac{\hat u_i-u_i}{u_i}\right|
 +\sum_i \left|\frac{\hat v_i-v_i}{v_i}\right|
 +\sum_i \left|\frac{\hat w_i-w_i}{w_i}\right|.
-``math
+$$
 
 物理损失为连续方程与三个动量残差的平方**求和**：
 
-``math
+$$
 L_{\mathrm{phy}} = \sum_j(f_{c,j}^2+f_{u,j}^2+f_{v,j}^2+f_{w,j}^2).
-``math
+$$
 
 总损失：
 
-``math
+$$
 L = 5 L_{\mathrm{data}} + 1 L_{\mathrm{phy}}.
-``math
+$$
 
 **重要**：`u_i/v_i/w_i` 可能接近或等于 0，直接相除可能产生 `Inf/NaN`；代码虽然替换了输入/预测中的 `NaN`，但**没有保护相对误差分母**。而且 `sum`（非 `mean`）意味着更改数据点或配点数量会改变损失量级。做不同稀疏度实验前，必须统一损失归一化和数值策略。
 

@@ -1,0 +1,29 @@
+{
+  "status": "completed",
+  "run_dir": "/home/simplexity/cyt/PINN-Super-resolution/runs/mlp_L10_W100_case100_lr0.001_phy18432_wd5wp1_seed1234_linux-baseline-100__20261014T163322624690Z__cde12360-135ddcd7",
+  "completed_step": 500000,
+  "training_wall_seconds_this_run": 207830.42457769206,
+  "peak_cuda_allocated_mib": 6940.36865234375,
+  "peak_cuda_reserved_mib": 9874.0,
+  "last_checkpoint": "/home/simplexity/cyt/PINN-Super-resolution/runs/mlp_L10_W100_case100_lr0.001_phy18432_wd5wp1_seed1234_linux-baseline-100__20261014T163322624690Z__cde12360-135ddcd7/checkpoints/step_00500000.pt",
+  "checkpoint_roundtrip": "passed",
+  "train_fit": {
+    "evaluation": "training_observation_fit_not_independent_test",
+    "points": 8297,
+    "mae_uvw": [
+      0.034685531214896106,
+      0.026109186202196072,
+      0.03633644899682811
+    ],
+    "rmse_uvw": [
+      0.059243023029299784,
+      0.058718041651774376,
+      0.07447625585620579
+    ],
+    "relative_l2_uvw": [
+      0.09157072793710616,
+      0.30922894343227175,
+      0.4464054259252294
+    ]
+  }
+}

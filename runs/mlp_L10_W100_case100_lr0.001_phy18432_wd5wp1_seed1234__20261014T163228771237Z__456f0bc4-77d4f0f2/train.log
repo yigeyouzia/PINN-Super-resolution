@@ -1,0 +1,108 @@
+RUN_DIR=/home/simplexity/cyt/PINN-Super-resolution/runs/mlp_L10_W100_case100_lr0.001_phy18432_wd5wp1_seed1234__20261014T163228771237Z__456f0bc4-77d4f0f2
+step=1 total=427987 data=85586.4 phy=54.8464 actual_phy=18432 time=0.791s
+step=2 total=2.14519e+06 data=426974 phy=10317.1 actual_phy=18432 time=1.230s
+step=3 total=1.3314e+06 data=265295 phy=4928 actual_phy=18432 time=1.671s
+step=4 total=240415 data=47969.2 phy=568.522 actual_phy=18432 time=2.108s
+step=5 total=1.04366e+06 data=208530 phy=1012.98 actual_phy=18432 time=2.531s
+step=6 total=987226 data=197125 phy=1601.98 actual_phy=18432 time=2.954s
+step=7 total=488023 data=97480.6 phy=620.336 actual_phy=18432 time=3.379s
+step=8 total=398139 data=79622.1 phy=28.3246 actual_phy=18432 time=3.801s
+step=9 total=636130 data=127103 phy=613.009 actual_phy=18432 time=4.228s
+step=10 total=546345 data=109122 phy=734.297 actual_phy=18432 time=4.651s
+checkpoint=/home/simplexity/cyt/PINN-Super-resolution/runs/mlp_L10_W100_case100_lr0.001_phy18432_wd5wp1_seed1234__20261014T163228771237Z__456f0bc4-77d4f0f2/checkpoints/step_00000010.pt
+step=11 total=425628 data=85046.9 phy=393.677 actual_phy=18432 time=5.095s
+step=12 total=384380 data=76850 phy=130.2 actual_phy=10872 time=5.354s
+step=13 total=221762 data=44318.2 phy=171.258 actual_phy=18432 time=5.781s
+step=14 total=230156 data=46001.4 phy=149.625 actual_phy=18432 time=6.206s
+step=15 total=310803 data=62127.1 phy=167.157 actual_phy=18432 time=6.633s
+step=16 total=267758 data=53507.6 phy=220.664 actual_phy=18432 time=7.082s
+step=17 total=207047 data=41355.2 phy=271.043 actual_phy=18432 time=7.501s
+step=18 total=168745 data=33670.4 phy=392.687 actual_phy=18432 time=7.920s
+step=19 total=172772 data=34440.8 phy=568.488 actual_phy=18432 time=8.341s
+step=20 total=210575 data=41976.6 phy=692.014 actual_phy=18432 time=8.768s
+checkpoint=/home/simplexity/cyt/PINN-Super-resolution/runs/mlp_L10_W100_case100_lr0.001_phy18432_wd5wp1_seed1234__20261014T163228771237Z__456f0bc4-77d4f0f2/checkpoints/step_00000020.pt
+step=21 total=231637 data=46193.4 phy=669.808 actual_phy=18432 time=9.211s
+step=22 total=192349 data=38361.2 phy=542.689 actual_phy=18432 time=9.666s
+step=23 total=174848 data=34895.3 phy=371.448 actual_phy=18432 time=10.138s
+step=24 total=163861 data=32738.1 phy=170.702 actual_phy=10872 time=10.422s
+step=25 total=174511 data=34828.5 phy=368.328 actual_phy=18432 time=10.844s
+step=26 total=162678 data=32444.5 phy=455.253 actual_phy=18432 time=11.264s
+step=27 total=200961 data=40063.5 phy=643.514 actual_phy=18432 time=11.683s
+step=28 total=203490 data=40537.4 phy=803.479 actual_phy=18432 time=12.106s
+step=29 total=168544 data=33532.1 phy=882.775 actual_phy=18432 time=12.528s
+step=30 total=127365 data=25295.5 phy=887.762 actual_phy=18432 time=12.948s
+checkpoint=/home/simplexity/cyt/PINN-Super-resolution/runs/mlp_L10_W100_case100_lr0.001_phy18432_wd5wp1_seed1234__20261014T163228771237Z__456f0bc4-77d4f0f2/checkpoints/step_00000030.pt
+step=31 total=150665 data=29977.4 phy=778.106 actual_phy=18432 time=13.385s
+step=32 total=161476 data=32158.5 phy=683.544 actual_phy=18432 time=13.810s
+step=33 total=150190 data=29919.7 phy=591.749 actual_phy=18432 time=14.235s
+step=34 total=133128 data=26517.2 phy=542.072 actual_phy=18432 time=14.658s
+step=35 total=142442 data=28380.9 phy=537.673 actual_phy=18432 time=15.080s
+step=36 total=149401 data=29814.6 phy=328.267 actual_phy=10872 time=15.343s
+step=37 total=121194 data=24061.2 phy=888.721 actual_phy=18432 time=15.764s
+step=38 total=127799 data=25356.2 phy=1018.29 actual_phy=18432 time=16.193s
+step=39 total=148881 data=29558.6 phy=1087.78 actual_phy=18432 time=16.617s
+step=40 total=138892 data=27563.6 phy=1074.47 actual_phy=18432 time=17.043s
+checkpoint=/home/simplexity/cyt/PINN-Super-resolution/runs/mlp_L10_W100_case100_lr0.001_phy18432_wd5wp1_seed1234__20261014T163228771237Z__456f0bc4-77d4f0f2/checkpoints/step_00000040.pt
+step=41 total=109153 data=21633.3 phy=985.932 actual_phy=18432 time=17.483s
+step=42 total=134319 data=26690.4 phy=866.61 actual_phy=18432 time=17.909s
+step=43 total=146922 data=29228 phy=781.503 actual_phy=18432 time=18.330s
+step=44 total=134137 data=26682.5 phy=724.569 actual_phy=18432 time=18.767s
+step=45 total=112956 data=22458.1 phy=665.976 actual_phy=18432 time=19.237s
+step=46 total=119974 data=23876.4 phy=592.095 actual_phy=18432 time=19.692s
+step=47 total=136819 data=27265.3 phy=492.692 actual_phy=18432 time=20.117s
+step=48 total=131701 data=26292.4 phy=238.702 actual_phy=10872 time=20.381s
+step=49 total=113190 data=22538.7 phy=496.137 actual_phy=18432 time=20.808s
+step=50 total=113688 data=22653.6 phy=420.266 actual_phy=18432 time=21.231s
+checkpoint=/home/simplexity/cyt/PINN-Super-resolution/runs/mlp_L10_W100_case100_lr0.001_phy18432_wd5wp1_seed1234__20261014T163228771237Z__456f0bc4-77d4f0f2/checkpoints/step_00000050.pt
+step=51 total=122282 data=24387.9 phy=341.96 actual_phy=18432 time=21.668s
+step=52 total=122625 data=24469.5 phy=277.542 actual_phy=18432 time=22.096s
+step=53 total=111274 data=22205.8 phy=245.16 actual_phy=18432 time=22.520s
+step=54 total=107213 data=21392.4 phy=251.402 actual_phy=18432 time=22.942s
+step=55 total=113029 data=22551.4 phy=272.042 actual_phy=18432 time=23.365s
+step=56 total=107719 data=21491.4 phy=262.31 actual_phy=18432 time=23.788s
+step=57 total=104294 data=20813.9 phy=224.399 actual_phy=18432 time=24.214s
+step=58 total=110314 data=22024.7 phy=190.069 actual_phy=18432 time=24.637s
+step=59 total=107431 data=21451.7 phy=172.953 actual_phy=18432 time=25.062s
+step=60 total=99302.5 data=19843.4 phy=85.4959 actual_phy=10872 time=25.327s
+checkpoint=/home/simplexity/cyt/PINN-Super-resolution/runs/mlp_L10_W100_case100_lr0.001_phy18432_wd5wp1_seed1234__20261014T163228771237Z__456f0bc4-77d4f0f2/checkpoints/step_00000060.pt
+step=61 total=105930 data=21142.8 phy=215.749 actual_phy=18432 time=25.765s
+step=62 total=103631 data=20690.7 phy=177.597 actual_phy=18432 time=26.189s
+step=63 total=101778 data=20328.6 phy=135.147 actual_phy=18432 time=26.612s
+step=64 total=107365 data=21452.4 phy=102.941 actual_phy=18432 time=27.067s
+step=65 total=103400 data=20662 phy=90.4782 actual_phy=18432 time=27.543s
+step=66 total=102685 data=20522.4 phy=73.6208 actual_phy=18432 time=28.051s
+step=67 total=108182 data=21626.2 phy=51.1411 actual_phy=18432 time=28.533s
+step=68 total=98493.3 data=19691.2 phy=37.3823 actual_phy=18432 time=29.010s
+step=69 total=106391 data=21273.2 phy=24.4091 actual_phy=18432 time=29.499s
+step=70 total=109671 data=21931.5 phy=13.8052 actual_phy=18432 time=29.925s
+checkpoint=/home/simplexity/cyt/PINN-Super-resolution/runs/mlp_L10_W100_case100_lr0.001_phy18432_wd5wp1_seed1234__20261014T163228771237Z__456f0bc4-77d4f0f2/checkpoints/step_00000070.pt
+step=71 total=99091.2 data=19816.1 phy=10.8129 actual_phy=18432 time=30.409s
+step=72 total=107748 data=21548.8 phy=3.94692 actual_phy=10872 time=30.670s
+step=73 total=112072 data=22411.1 phy=16.8839 actual_phy=18432 time=31.094s
+step=74 total=99132.5 data=19824.8 phy=8.62426 actual_phy=18432 time=31.517s
+step=75 total=108089 data=21617.2 phy=2.6251 actual_phy=18432 time=31.992s
+step=76 total=115089 data=23017.5 phy=1.12354 actual_phy=18432 time=32.460s
+step=77 total=107808 data=21561.3 phy=1.23677 actual_phy=18432 time=32.931s
+step=78 total=97459.6 data=19491.6 phy=1.562 actual_phy=18432 time=33.410s
+step=79 total=106333 data=21266.1 phy=2.35492 actual_phy=18432 time=33.861s
+step=80 total=100478 data=20095.3 phy=1.96344 actual_phy=18432 time=34.281s
+checkpoint=/home/simplexity/cyt/PINN-Super-resolution/runs/mlp_L10_W100_case100_lr0.001_phy18432_wd5wp1_seed1234__20261014T163228771237Z__456f0bc4-77d4f0f2/checkpoints/step_00000080.pt
+step=81 total=100135 data=20026.5 phy=2.17836 actual_phy=18432 time=34.721s
+step=82 total=102945 data=20588.5 phy=2.22963 actual_phy=18432 time=35.145s
+step=83 total=96284.1 data=19256.5 phy=1.42086 actual_phy=18432 time=35.568s
+step=84 total=99163.7 data=19832.5 phy=1.07674 actual_phy=10872 time=35.827s
+step=85 total=96468.6 data=19291 phy=13.5292 actual_phy=18432 time=36.250s
+step=86 total=105438 data=21083.4 phy=20.9798 actual_phy=18432 time=36.674s
+step=87 total=109037 data=21800.4 phy=35.1186 actual_phy=18432 time=37.099s
+Run stopped
+Traceback (most recent call last):
+  File "/home/simplexity/cyt/PINN-Super-resolution/train.py", line 441, in training
+    total.backward()
+  File "/home/simplexity/anaconda3/envs/pinn_sr/lib/python3.11/site-packages/torch/_tensor.py", line 625, in backward
+    torch.autograd.backward(
+  File "/home/simplexity/anaconda3/envs/pinn_sr/lib/python3.11/site-packages/torch/autograd/__init__.py", line 354, in backward
+    _engine_run_backward(
+  File "/home/simplexity/anaconda3/envs/pinn_sr/lib/python3.11/site-packages/torch/autograd/graph.py", line 841, in _engine_run_backward
+    return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt

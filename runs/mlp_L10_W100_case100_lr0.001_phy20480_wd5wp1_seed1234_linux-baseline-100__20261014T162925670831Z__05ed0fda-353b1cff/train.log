@@ -1,0 +1,21 @@
+RUN_DIR=/home/simplexity/cyt/PINN-Super-resolution/runs/mlp_L10_W100_case100_lr0.001_phy20480_wd5wp1_seed1234_linux-baseline-100__20261014T162925670831Z__05ed0fda-353b1cff
+step=1 total=427993 data=85586.4 phy=61.103 actual_phy=20480 time=0.833s
+step=50 total=109873 data=21899.7 phy=374.657 actual_phy=20480 time=23.039s
+step=100 total=97754.2 data=19540.7 phy=50.5031 actual_phy=20480 time=45.339s
+step=150 total=97043.2 data=19406 phy=13.2761 actual_phy=20480 time=67.704s
+step=200 total=100203 data=20038.7 phy=9.67077 actual_phy=20480 time=89.623s
+step=250 total=94858.3 data=18969.6 phy=10.2266 actual_phy=20480 time=112.141s
+step=300 total=99256.7 data=19849.5 phy=9.33926 actual_phy=20480 time=134.423s
+step=350 total=100813 data=20160.9 phy=8.39106 actual_phy=20480 time=157.152s
+Run stopped
+Traceback (most recent call last):
+  File "/home/simplexity/cyt/PINN-Super-resolution/train.py", line 441, in training
+    total.backward()
+  File "/home/simplexity/anaconda3/envs/pinn_sr/lib/python3.11/site-packages/torch/_tensor.py", line 625, in backward
+    torch.autograd.backward(
+  File "/home/simplexity/anaconda3/envs/pinn_sr/lib/python3.11/site-packages/torch/autograd/__init__.py", line 354, in backward
+    _engine_run_backward(
+  File "/home/simplexity/anaconda3/envs/pinn_sr/lib/python3.11/site-packages/torch/autograd/graph.py", line 841, in _engine_run_backward
+    return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt

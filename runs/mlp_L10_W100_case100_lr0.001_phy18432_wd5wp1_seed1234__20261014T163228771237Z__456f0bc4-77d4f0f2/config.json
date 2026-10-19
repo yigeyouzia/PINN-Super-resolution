@@ -1,0 +1,68 @@
+{
+  "data_dir": "/home/simplexity/cyt/PINN-Super-resolution/data/100",
+  "phy_file": "/home/simplexity/cyt/PINN-Super-resolution/data/phy.csv",
+  "model": "mlp",
+  "hidden_layers": 10,
+  "hidden_width": 100,
+  "steps": 500000,
+  "optimizer": "adam",
+  "lr": 0.001,
+  "phy_batch_size": 18432,
+  "phy_sampling": "sequential",
+  "weight_data": 5.0,
+  "weight_physics": 1.0,
+  "seed": 1234,
+  "device": "auto",
+  "dtype": "float32",
+  "num_threads": null,
+  "log_every": 1,
+  "save_every": 10,
+  "eval_batch_size": 1024,
+  "output_root": "/home/simplexity/cyt/PINN-Super-resolution/runs",
+  "run_tag": "",
+  "resume": null,
+  "check_only": false,
+  "resolved_device": "cuda",
+  "data_info": {
+    "observation_count": 8297,
+    "collocation_count": 213624,
+    "min_abs_velocity": [
+      0.014740217477083206,
+      2.0840769138885662e-05,
+      3.956666660087649e-06
+    ],
+    "ub": [
+      2.575000047683716,
+      1.4249999523162842,
+      1.375
+    ],
+    "lb": [
+      0.07500000298023224,
+      0.17499999701976776,
+      0.2750000059604645
+    ],
+    "ub_velocity": [
+      0.014979366213083267,
+      0.5755083560943604,
+      1.0086803436279297
+    ],
+    "lb_velocity": [
+      -1.475172519683838,
+      -0.8990830183029175,
+      -0.6126576662063599
+    ]
+  },
+  "data_sha256": {
+    "coordinate": "25b410ee3e5f3c3ff31bbee6f57210f49bfdfc2487cfa4f6b876e2723cdef946",
+    "velocity_x": "c9e9747e112f928a296da20b0cfd4de59d75df042be842ee3d958d46502de483",
+    "velocity_y": "90e9d94592fc49dc5195bd17c4ea9fb3dc27dd992bc658d9961c01327cfa9771",
+    "velocity_z": "8c5b26b74c76d45969e0d0481bc7207bfa602a98eaef8e2a5e34e9252d55a0b1",
+    "physics": "fb719818053d0f9ebe4b1c72f1e7a52abd0ecc72b06a777ec80beee997270874"
+  },
+  "source_sha256": {
+    "train.py": "a517de36e903d71c1a1e772530c4a7b5e468273323cc6fcfdd436042247101ff",
+    "pinn/pinn.py": "ddd6bbb22feefd96603ec30f4b2bb18753d27da0e2464273913f721e5e2b5a62",
+    "pinn/network.py": "353b91c99aa31baecfb010bd6d5cc1974fed2d2bf59a6b2cab8ba7eb70f36f23"
+  },
+  "effective_phy_batch_size": 18432
+}

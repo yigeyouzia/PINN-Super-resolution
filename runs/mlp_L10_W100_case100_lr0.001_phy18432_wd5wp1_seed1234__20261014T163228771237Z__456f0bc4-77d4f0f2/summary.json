@@ -1,0 +1,7 @@
+{
+  "status": "interrupted",
+  "run_dir": "/home/simplexity/cyt/PINN-Super-resolution/runs/mlp_L10_W100_case100_lr0.001_phy18432_wd5wp1_seed1234__20261014T163228771237Z__456f0bc4-77d4f0f2",
+  "completed_step": 87,
+  "error": "KeyboardInterrupt: ",
+  "last_checkpoint": "/home/simplexity/cyt/PINN-Super-resolution/runs/mlp_L10_W100_case100_lr0.001_phy18432_wd5wp1_seed1234__20261014T163228771237Z__456f0bc4-77d4f0f2/checkpoints/step_00000080.pt"
+}

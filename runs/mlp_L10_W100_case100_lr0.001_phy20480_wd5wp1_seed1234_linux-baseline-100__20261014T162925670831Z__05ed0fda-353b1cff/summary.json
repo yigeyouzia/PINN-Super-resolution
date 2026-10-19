@@ -1,0 +1,7 @@
+{
+  "status": "interrupted",
+  "run_dir": "/home/simplexity/cyt/PINN-Super-resolution/runs/mlp_L10_W100_case100_lr0.001_phy20480_wd5wp1_seed1234_linux-baseline-100__20261014T162925670831Z__05ed0fda-353b1cff",
+  "completed_step": 394,
+  "error": "KeyboardInterrupt: ",
+  "last_checkpoint": null
+}
