@@ -7,7 +7,9 @@
 
 > **当前复现入口（2026-10-14）**：[Mac → Linux 复现计划](docs/experiments/01_mac_to_linux_reproduction_plan.md)。先做 Mac CPU 冒烟测试，再做 Linux CUDA 验证与正式实验；本轮仅修复文档公式并制定计划，没有修改训练算法。
 
-> **可配置训练入口（2026-10-14）**：新增 [train.py](train.py)；参数、Mac/Linux 测试及完整训练命令见 [可配置训练说明](docs/experiments/02_configurable_training.md)。新入口的 Mac CPU 20 步训练与保存恢复已通过，Linux/长训练未验证；作者原文件及预训练权重保持不变。
+> **训练入口与重构（2026-10-19）**：[train.py](train.py) 已拆为薄入口 + [src/pinn_sr 模块](src/README.md)，命令参数沿用，作者原文件与权重不变。24 项回归、旧 v1 小型权重兼容及 Mac CPU 20 步通过；新版本 Linux CUDA、服务器实际长训练权重待验证。参数与完整指令见 [可配置训练说明](docs/experiments/02_configurable_training.md)，进度见 [开发规划](src/开发规划与交付进度.md)。evaluate.py 与图片生成尚未实现。
+>
+> 历史核查范围说明：下文的“未执行训练”等表述保留其 2026-10-09 原始审阅语境；最新工程验证以上述入口与 src 文档为准。
 
 ## 1. 一句话理解项目
 

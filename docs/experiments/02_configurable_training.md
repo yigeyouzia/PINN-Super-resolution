@@ -4,7 +4,7 @@ summary: train.py 保留作者原数据损失和三维物理残差，新增显�
 type: repo-note
 status: partially-reproduced
 created: 2026-10-14
-updated: 2026-10-14
+updated: 2026-10-19
 papers:
   - "An airflow velocity field reconstruction method with sparse or incomplete data using physics-informed neural network; DOI: 10.1016/j.jobe.2024.109231"
 github_repositories:
@@ -16,8 +16,8 @@ data:
 
 # 可配置训练入口：参数与执行命令
 
-> 更新时间：2026-10-14。
-> 状态：新增入口已完成；Mac CPU 单元测试与作者 data/5 的 20 步训练、保存恢复已通过。Linux CUDA、长期训练和论文指标复现未执行。
+> 更新时间：2026-10-19。
+> 状态：入口已重构为 train.py + src/pinn_sr，24 项回归与作者 data/5 的 Mac CPU 20 步通过。用户已反馈旧版本 Linux 500000 步完成；新版本 CUDA 与服务器实际权重尚未独立核验。模块职责、兼容策略见 [src/README](../../src/README.md)。
 > 当前可执行入口：[train.py](../../train.py)；测试：[tests/test_train.py](../../tests/test_train.py)。
 > [Mac/Linux 环境与复现背景](./01_mac_to_linux_reproduction_plan.md)保留；从头训练现在优先使用本文件，不需要再手改作者 pinn_train.py。
 
@@ -53,7 +53,7 @@ train.py 不依赖 Mayavi、pandas、SciPy 或 Matplotlib；数值训练只需 t
 | `--phy-sampling` | `sequential` | sequential 为全体配点按顺序循环；random 为每步无放回抽样，各步间可重复 |
 | `--weight-data` | `5` | 数据损失权重，非负 |
 | `--weight-physics` | `1` | 物理损失权重，非负；两个权重不能同时为零 |
-| `--seed` | `1234` | 初始化与采样随机种子；在作者导入重置种子之后设置 |
+| `--seed` | `1234` | 初始化与采样随机种子；新版导入无作者重置种子的副作用 |
 | `--device` | `auto` | auto 选可用 CUDA，否则 CPU；显式 cuda 不可用时失败，不静默转 CPU |
 | `--dtype` | `float32` | 可选 float64；float64 是额外数值实验，不是原 float32 默认 |
 | `--num-threads` | 未指定 | 可限制 PyTorch CPU 线程；Mac 冒烟建议 1，不据此宣称最佳吞吐 |
@@ -63,6 +63,7 @@ train.py 不依赖 Mayavi、pandas、SciPy 或 Matplotlib；数值训练只需 t
 | `--output-root` | `runs` | 新运行目录的父目录 |
 | `--run-tag` | 空 | 可选标签，如 mac-smoke、linux-baseline；不改变模型 |
 | `--resume` | 未指定 | 从本入口生成的状态文件续训；始终创建新目录 |
+| `--allow-legacy-resume` | 关闭 | 显式允许已核验源码版本的重构前 v1 续训；不是跳过检查，旧权重推理无需此项 |
 | `--check-only` | 关闭 | 检查数据、路径、设备和续训兼容性；不训练、不创建输出目录 |
 
 路径规则：相对路径相对于 train.py 所在项目根目录，而不是当前终端工作目录；绝对路径直接使用。因此可以在其他目录执行 `python /绝对路径/train.py ...`。支持 ~ 展开；自定义路径含空格时加引号。
@@ -81,8 +82,8 @@ train.py 不依赖 Mayavi、pandas、SciPy 或 Matplotlib；数值训练只需 t
 | 保留 | 新入口的工程处理 |
 |---|---|
 | Tanh、Xavier、坐标 min-max、uvwp 输出 | 独立 PortableDNN；ub/lb 注册为 buffer，显式 dtype/device |
-| 三分量绝对相对误差 sum | 直接复用作者 PINN.loss_func，不改为 MSE/mean，不加 epsilon |
-| 连续性和三维动量残差 | 直接复用作者函数；六个可学习 PDE 系数仍零初始化 |
+| 三分量绝对相对误差 sum | 独立迁移作者计算，前向/损失/梯度对照通过；不改为 MSE/mean，不加 epsilon |
+| 连续性和三维动量残差 | 独立迁移三维导数与残差；六个可学习 PDE 系数仍零初始化 |
 | alpha 注册但没有损失梯度 | 保留，梯度有限检查允许这个参数的 grad=None |
 | Adam、默认 data:physics=5:1 | 学习率/权重由参数真正控制 |
 | 顺序配点轮询 | 使用清晰游标覆盖尾批，避免原脚本整除边界重复首批的情况 |
@@ -108,7 +109,7 @@ runs/
 
 - 时间戳使用 UTC，末尾 Z；配置完整值以 config.json 为准，文件夹名只是关键参数摘要。
 - 每次运行都是新目录，同参数重复执行也不会覆盖；目录、JSON、日志和 checkpoint 都采用独占创建。
-- 拒绝写入 data/、pinn/、docs/、tests/、.git/ 和原 result_model_pinn* 目录，校验经过 symlink 解析的真实路径。
+- 拒绝写入 data/、pinn/、src/、docs/、tests/、.git/ 和原 result_model_pinn* 目录，校验经过 symlink 解析的真实路径。
 - 状态文件包含模型参数、归一化 buffer、优化器状态、步数、配置、采样状态和 Torch RNG；使用 weights_only=True 恢复。
 - 不把新状态文件交给作者原 pinn_predict_plane.py，它要求完整 PINN 对象；新状态需用本入口 restore_checkpoint。
 - 最后 summary.json 记录 completed/failed/interrupted、checkpoint 检查及 train_fit；失败不会覆盖其他运行。
@@ -247,9 +248,11 @@ python train.py \
   --output-root runs --run-tag mac-resume
 ```
 
-steps=40 表示总共做到第 40 步，从第 20 步文件继续只增加 20 步。新目录保存 30、40 步状态，不重写旧目录。需重复原网络、学习率、损失、数据、seed、采样参数；改变这些参数或数据/源码指纹会被拒绝，避免续训名义下偷偷换实验。
+steps=40 表示总共做到第 40 步，从第 20 步文件继续只增加 20 步。新目录保存 30、40 步状态，不重写旧目录。需重复原网络、学习率、损失、数据、seed、采样参数；改变这些参数或数据会被拒绝。新版普通续训要求维护源码哈希与方法契约一致；仅已核验的重构前源码组合可以通过 --allow-legacy-resume 显式迁移，未知源码不能绕过检查。
 
 允许更改总步数、日志/保存频率、输出目录和设备；跨 CPU/CUDA 迁移不承诺逐位一致，CUDA 结果也未实测。只接受新格式状态文件，不通过 weights_only=False 打开作者旧模型。
+
+旧版 v1 迁移：在上面续训命令中追加 --allow-legacy-resume，且 --resume 指向旧文件。其余参数必须与旧实验一致；无需为了推理/绘图再次训练。该选项只允许 checkpoint.py 中预先核验的源码哈希组合，服务器实际文件尚未核验，若提示未知来源需先比对源码。新运行的 config.json 会记录 resume_compatibility。
 
 ### 7.2 数值读取示例
 
